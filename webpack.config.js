@@ -2,7 +2,6 @@ var webpack = require("webpack"),
     path = require("path"),
     fileSystem = require("fs"),
     env = require("./utils/env"),
-    CleanWebpackPlugin = require("clean-webpack-plugin").CleanWebpackPlugin,
     CopyWebpackPlugin = require("copy-webpack-plugin"),
     HtmlWebpackPlugin = require("html-webpack-plugin"),
     WriteFilePlugin = require("write-file-webpack-plugin");
@@ -23,7 +22,8 @@ var options = {
   entry: {
     popup: path.join(__dirname, "src", "js", "popup.js"),
     options: path.join(__dirname, "src", "js", "options.js"),
-    background: path.join(__dirname, "src", "js", "background.js")
+    background: path.join(__dirname, "src", "js", "background.js"),
+    newtab: path.join(__dirname, "src", "js", "newtab.js")
   },
   output: {
     path: path.join(__dirname, "build"),
@@ -54,12 +54,11 @@ var options = {
     ]
   },
   resolve: {
+    modules: [path.resolve(__dirname, 'src'), 'node_modules', path.resolve(__dirname, 'src/js/newtab')],
     alias: alias,
     extensions: fileExtensions.map(extension => ("." + extension)).concat([".jsx", ".js", ".css"])
   },
   plugins: [
-    // clean the build folder
-    new CleanWebpackPlugin(),
     // expose and write the allowed env vars on the compiled bundle
     new webpack.EnvironmentPlugin(["NODE_ENV"]),
     new CopyWebpackPlugin([{
@@ -87,6 +86,11 @@ var options = {
       template: path.join(__dirname, "src", "background.html"),
       filename: "background.html",
       chunks: ["background"]
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "src", "newtab.html"),
+      filename: "newtab.html",
+      chunks: ["newtab"]
     }),
     new WriteFilePlugin()
   ]
