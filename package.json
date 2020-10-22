@@ -3,12 +3,14 @@
   "version": "0.0.1",
   "description": "A boilerplate to chrome extension with webpack",
   "scripts": {
-    "build": "node utils/build.js",
+    "build": "NODE_ENV=production node utils/build.js",
     "start": "node utils/webserver.js"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "chrome-extension-async": "^3.4.1",
     "history": "^5.0.0",
+    "notistack": "^1.0.1",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-ga": "^3.1.2",
