@@ -6,31 +6,16 @@ import { resource } from '../services'
 import Typography from "@material-ui/core/Typography";
 import { useSnackbar } from 'notistack';
 import Tooltip from "@material-ui/core/Tooltip";
-import Link from "@material-ui/core/Link";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import ReactGA from 'react-ga';
 import cst from "../constants";
 
 const useStyles = makeStyles((theme) => ({
-	copyright: {
-		marginTop: theme.spacing(3)
-	},
 	result: {
 		marginBottom: theme.spacing(2)
 	}
 }));
-function Copyright() {
-	return (
-		<Typography variant="body2" color="textSecondary" align="center">
-			{'Copyright © '}
-			<Link color="inherit" href="#">
-				ZenzjTech
-			</Link>{' '}
-			{new Date().getFullYear()}
-			{'.'}
-		</Typography>
-	);
-}
+
 const FetchResource = (props) => {
 	const classes = useStyles();
 	const { userInfo } = props;
@@ -97,8 +82,9 @@ const FetchResource = (props) => {
 			alignItems="center"
 			display={"flex"}
 			flexDirection={"column"}
-			m={4}
+			mx={4}
 			mt={9}
+			mb={1}
 		>
 			<TextField
 				id="outlined-helperText"
@@ -115,13 +101,11 @@ const FetchResource = (props) => {
 			<Tooltip title="click to copy" placement="right">
 				<Typography
 					variant="h6" onClick={handleCopy}
-					className={classes.result}
 				>
 					Id: {result}
 				</Typography>
 			</Tooltip>
 			}
-			<Copyright className={classes.copyright}/>
 		</Box>
 	)
 }

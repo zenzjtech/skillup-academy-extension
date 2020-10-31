@@ -1,8 +1,10 @@
 import React from "react";
-
-import FetchResource from './FetchResource';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+
+import FetchResource from './FetchResource';
+import Rating from './Rating';
+import Copyright from "./CopyRight";
 
 const View = (props) => {
   return (
@@ -13,6 +15,8 @@ const View = (props) => {
         </Toolbar>
       </AppBar>
       <FetchResource userInfo={props.userInfo}/>
+      <Copyright/>
+      <Rating/>
     </>
   )
 };
