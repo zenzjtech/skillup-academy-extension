@@ -1,4 +1,11 @@
 import "../css/popup.css";
-import hello from "./popup/example";
+import React from "react";
+import { render } from "react-dom";
+import App from "./popup/App";
+import "img/icon-128.png"
+require('chrome-extension-async')
 
-hello();
+render(
+  <App/>,
+  window.document.getElementById("app-container")
+);
