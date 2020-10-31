@@ -1,5 +1,6 @@
 {
   "name": "Facebook Id Finder",
+  "version": "1.0",
   "browser_action": {
     "default_popup": "popup.html",
     "default_icon": "icon-128.png"
@@ -9,7 +10,10 @@
   },
   "manifest_version": 2,
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "identity",
+    "identity.email"
   ],
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  "description":"Search for Facebook ID base on URLs",
+  "content_security_policy": "script-src 'self' https://www.google-analytics.com https://ssl.google-analytics.com 'unsafe-eval'; object-src 'self'"
 }

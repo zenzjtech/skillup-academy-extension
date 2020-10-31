@@ -4,7 +4,7 @@ import FetchResource from './FetchResource';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 
-const View = () => {
+const View = (props) => {
   return (
     <>
       <AppBar position="fixed">
@@ -12,7 +12,7 @@ const View = () => {
           Facebook ID Finder
         </Toolbar>
       </AppBar>
-      <FetchResource/>
+      <FetchResource userInfo={props.userInfo}/>
     </>
   )
 };
