@@ -1,10 +1,11 @@
 var webpack = require("webpack"),
-    path = require("path"),
-    fileSystem = require("fs"),
-    env = require("./utils/env"),
-    CopyWebpackPlugin = require("copy-webpack-plugin"),
-    HtmlWebpackPlugin = require("html-webpack-plugin"),
-    WriteFilePlugin = require("write-file-webpack-plugin");
+  path = require("path"),
+  fileSystem = require("fs"),
+  env = require("./utils/env"),
+  CopyWebpackPlugin = require("copy-webpack-plugin"),
+  HtmlWebpackPlugin = require("html-webpack-plugin"),
+  WriteFilePlugin = require("write-file-webpack-plugin"),
+  TerserPlugin = require("terser-webpack-plugin");
 
 // load the secrets
 var alias = {};
@@ -21,6 +22,7 @@ var options = {
   mode: process.env.NODE_ENV || "development",
   entry: {
     popup: path.join(__dirname, "src", "js", "popup.js"),
+    background: path.join(__dirname, "src", "js", "background", "index.js"),
   },
   output: {
     path: path.join(__dirname, "build"),
@@ -75,7 +77,18 @@ var options = {
       chunks: ["popup"]
     }),
     new WriteFilePlugin()
-  ]
+  ],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          keep_classnames: true,
+          keep_fnames: true
+        }
+      })
+    ]
+  }
 };
 
 if (env.NODE_ENV === "development") {

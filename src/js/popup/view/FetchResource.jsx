@@ -56,16 +56,20 @@ const FetchResource = (props) => {
 		}
 		try {
 			setLoading(true);
-			const response = await resource.getFbId({
-				query: currentUrl
-			});
-			if (response && response.id)
-				setResult(response.id);
-			else
+			const response = await chrome.runtime.sendMessage({
+				url: currentUrl
+			})
+			if (response.type === cst.FETCH_FAIL)
+				throw { message: response.payload }
+			
+			if (result === null) {
 				enqueueSnackbar('Unable to find the id for the given URL' , { variant: 'warning' })
+			} else
+				setResult(response.payload)
+			
 		} catch (error) {
 			console.log(error);
-			enqueueSnackbar('There is some errors, please try again later' , { variant: 'warning' })
+			enqueueSnackbar(error && error.message || 'There is some errors, please try again later' , { variant: 'warning' })
 		} finally {
 			setLoading(false);
 		}

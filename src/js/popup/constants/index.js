@@ -5,7 +5,9 @@ const cst = {
 	ACTION_ERROR_OCCURS: 'err.occur',
 	ACTION_CLEAR_ERRORS: 'err.clear',
 	GA_CATEGORY_CLICK: 'click',
-	GA_ACTION_GET_ID: 'get-id'
+	GA_ACTION_GET_ID: 'get-id',
+	FETCH_SUCCESS: 'FETCH_SUCCESS',
+	FETCH_FAIL: 'FETCH_FAIL',
 };
 
 export default cst;
