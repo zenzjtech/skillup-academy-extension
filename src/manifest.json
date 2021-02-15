@@ -1,5 +1,5 @@
 {
-  "name": "Find Facebook Id",
+  "name": "Textrazor test",
   "version": "1.2",
   "browser_action": {
     "default_popup": "popup.html",
@@ -17,7 +17,7 @@
     "activeTab",
     "identity",
     "identity.email",
-    "https://*.facebook.com/*",
+    "https://*.textrazor.com/*",
     "webRequest",
     "webRequestBlocking"
   ],

@@ -1,12 +1,11 @@
 import cst from "../popup/constants";
+import { API_KEY, API_URL } from "../popup/config";
+import axios from "axios";
+import { handleResponse } from "../popup/services/helper";
 
 require('chrome-extension-async')
 
-import { process} from "./facebook-id";
-
-chrome.webRequest.onBeforeSendHeaders.addListener/**
- *
- */
+chrome.webRequest.onBeforeSendHeaders.addListener
 (function(requestHeaders) {
   requestHeaders = requestHeaders.requestHeaders;
   
@@ -16,10 +15,10 @@ chrome.webRequest.onBeforeSendHeaders.addListener/**
   if (temp === -1)
     requestHeaders.push({
       name: "Origin",
-      value: "https://www.facebook.com"
+      value: "https://textrazor.com"
     })
   else
-    requestHeaders[temp].value = "https://www.facebook.com";
+    requestHeaders[temp].value = "https://textrazor.com";
   
   temp = requestHeaders.findIndex(function(d) {
     return "referer" === d.name
@@ -27,22 +26,35 @@ chrome.webRequest.onBeforeSendHeaders.addListener/**
   if (temp === -1)
     requestHeaders.push({
       name: "Referer",
-      value: "https://www.facebook.com"
+      value: "https://textrazor.com"
     })
   else
-    requestHeaders[temp].value = "https://www.facebook.com";
+    requestHeaders[temp].value = "https://textrazor.com"
   return {
     requestHeaders
   }
 }, {
-  urls: ["https://*.facebook.com/*"]
+  urls: ["https://*.textrazor.com/*"]
 }, ["blocking", "requestHeaders", "extraHeaders"]);
+
+
+async function handleApiCall(url) {
+  return fetch(API_URL, {
+    method: 'POST',
+    "headers": {
+      "Content-Type": 'application/x-www-form-urlencoded',
+      "x-textRazor-key": API_KEY
+    },
+    body: `url=${url}&extractors=entities, topics, words, phrases, dependency-trees, relations, entailments, senses, spelling&cleanup.mode=cleanHTML`
+    
+  }).then(handleResponse)
+}
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   (async () => {
     const { url }  = message;
     try {
-      const id = await process(url)
+      const id = await handleApiCall(url)
       sendResponse({
         type: cst.FETCH_SUCCESS,
         payload: id
@@ -54,6 +66,5 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
       })
     }
   })()
-  
   return true
 })

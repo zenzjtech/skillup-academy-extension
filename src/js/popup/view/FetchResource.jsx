@@ -50,10 +50,6 @@ const FetchResource = (props) => {
 			category: cst.GA_CATEGORY_CLICK,
 			action: cst.GA_ACTION_GET_ID
 		});
-		if (currentUrl && !currentUrl.includes('facebook.com')) {
-			enqueueSnackbar('Hostname must be facebook.com!', { variant: 'warning' })
-			return;
-		}
 		try {
 			setLoading(true);
 			const response = await chrome.runtime.sendMessage({
