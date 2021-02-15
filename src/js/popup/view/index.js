@@ -11,7 +11,7 @@ const View = (props) => {
     <>
       <AppBar position="fixed">
         <Toolbar>
-          Facebook ID Finder
+          Test textRazorAPI
         </Toolbar>
       </AppBar>
       <FetchResource userInfo={props.userInfo}/>
