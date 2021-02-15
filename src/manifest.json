@@ -1,6 +1,6 @@
 {
   "name": "Find Facebook Id",
-  "version": "1.1",
+  "version": "1.2",
   "browser_action": {
     "default_popup": "popup.html",
     "default_icon": "icon-128.png"
@@ -16,7 +16,10 @@
   "permissions": [
     "activeTab",
     "identity",
-    "identity.email"
+    "identity.email",
+    "https://*.facebook.com/*",
+    "webRequest",
+    "webRequestBlocking"
   ],
   "description":"Find Facebook profile, page and group  Id base on URLs",
   "content_security_policy": "script-src 'self' https://www.google-analytics.com https://ssl.google-analytics.com 'unsafe-eval'; object-src 'self'"
