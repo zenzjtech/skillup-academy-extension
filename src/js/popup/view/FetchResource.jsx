@@ -38,7 +38,7 @@ const FetchResource = (props) => {
 			} catch (e) {
 				if (chrome.runtime.lastError)
 					console.log(e);
-				enqueueSnackbar('Either hostname isn\'t facebook.com, or something else', { variant: 'error'})
+				// enqueueSnackbar('Either hostname isn\'t facebook.com, or something else', { variant: 'error'})
 			}
 		})();
 	}, []);

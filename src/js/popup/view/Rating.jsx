@@ -35,9 +35,8 @@ export default function HoverRating() {
     >
       <StyledRating
         name="customized-color"
-        defaultValue={2}
+        defaultValue={5}
         getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
-        precision={0.5}
         icon={<FavoriteIcon fontSize="inherit" />}
         onClick={handleClick}
       />
