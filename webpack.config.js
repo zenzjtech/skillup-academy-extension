@@ -4,8 +4,7 @@ var webpack = require("webpack"),
   env = require("./utils/env"),
   CopyWebpackPlugin = require("copy-webpack-plugin"),
   HtmlWebpackPlugin = require("html-webpack-plugin"),
-  WriteFilePlugin = require("write-file-webpack-plugin"),
-  TerserPlugin = require("terser-webpack-plugin");
+  WriteFilePlugin = require("write-file-webpack-plugin")
 
 // load the secrets
 var alias = {};
@@ -77,18 +76,7 @@ var options = {
       chunks: ["popup"]
     }),
     new WriteFilePlugin()
-  ],
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          keep_classnames: true,
-          keep_fnames: true
-        }
-      })
-    ]
-  }
+  ]
 };
 
 if (env.NODE_ENV === "development") {
