@@ -22,6 +22,7 @@ var options = {
   entry: {
     popup: path.join(__dirname, "src", "js", "popup.js"),
     background: path.join(__dirname, "src", "js", "background", "index.js"),
+    contentScript: path.join(__dirname, "src", "js", "content-script", "index.js")
   },
   output: {
     path: path.join(__dirname, "build"),
@@ -69,6 +70,14 @@ var options = {
           ...JSON.parse(content.toString())
         }))
       }
+    }, {
+      from: "src/css/inject.css"
+    }, {
+      from: "src/js/content-script/chrome-extension-async.js"
+    }, {
+      from: "src/js/content-script/highlight.js"
+    }, {
+      from: "src/js/content-script/index.js"
     }]),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "src", "popup.html"),

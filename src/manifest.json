@@ -9,6 +9,15 @@
     "scripts": ["background.bundle.js"],
     "persistent": true
   },
+  "content_scripts":
+  [
+    {
+      "matches": ["http://*/*","https://*/*"],
+      "js":["chrome-extension-async.js", "highlight.js", "index.js"],
+      "css": ["inject.css"],
+      "run_at": "document_end"
+    }
+  ],
   "icons": {
     "128": "icon-128.png"
   },

@@ -46,10 +46,6 @@ const FetchResource = (props) => {
 	
 	const handleFetchResource = async (e) => {
 		e.preventDefault();
-		ReactGA.event({
-			category: cst.GA_CATEGORY_CLICK,
-			action: cst.GA_ACTION_GET_ID
-		});
 		try {
 			setLoading(true);
 			const response = await chrome.runtime.sendMessage({
