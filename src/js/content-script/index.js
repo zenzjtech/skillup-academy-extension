@@ -1,4 +1,3 @@
-
 const hl = new Highlight()
 
 async function getTextInfo() {
@@ -17,6 +16,9 @@ async function getTextInfo() {
 
 async function process() {
   try {
+    const state = await chrome.storage.local.get(['KEY_STATE'])
+    if (state.KEY_STATE === false)
+      return
     let result = await getTextInfo()
     result = JSON.parse(result)
     let entities = result.response.entities

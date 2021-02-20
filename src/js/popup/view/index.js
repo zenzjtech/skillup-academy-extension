@@ -5,6 +5,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import FetchResource from './FetchResource';
 import Rating from './Rating';
 import Copyright from "./CopyRight";
+import Switcher from "./Switcher";
 
 const View = (props) => {
   return (
@@ -14,9 +15,7 @@ const View = (props) => {
           Test textRazorAPI
         </Toolbar>
       </AppBar>
-      <FetchResource userInfo={props.userInfo}/>
-      <Copyright/>
-      <Rating/>
+      <Switcher />
     </>
   )
 };

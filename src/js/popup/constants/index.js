@@ -8,6 +8,7 @@ const cst = {
 	GA_ACTION_GET_ID: 'get-id',
 	FETCH_SUCCESS: 'FETCH_SUCCESS',
 	FETCH_FAIL: 'FETCH_FAIL',
+	KEY_STATE: 'KEY_STATE'
 };
 
 export default cst;
