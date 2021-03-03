@@ -20,11 +20,13 @@ async function process() {
     if (state.KEY_STATE === false)
       return
     let result = await getTextInfo()
-    let keywords = result.map(v => v.name)
-    console.log(keywords)
-    keywords.forEach(keyword => {
-      console.log(keyword)
-      hl.apply(keyword, 1);
+    setInterval(function() {
+      let keywords = result.map(v => v.name)
+      console.log(keywords)
+      keywords.forEach(keyword => {
+        console.log(keyword)
+        hl.apply(keyword, 1);
+      }, 500)
     })
   } catch (e) {
     console.log(e)
