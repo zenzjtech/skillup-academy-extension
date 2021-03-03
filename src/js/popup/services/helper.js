@@ -1,5 +1,5 @@
 function handleResponse(response) {
-	return response.text()
+	return response.json()
 }
 
 module.exports = {

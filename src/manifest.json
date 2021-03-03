@@ -1,5 +1,5 @@
 {
-  "name": "Textrazor test",
+  "name": "SKillup-Academy-linker",
   "version": "1.2",
   "browser_action": {
     "default_popup": "popup.html",
@@ -27,7 +27,7 @@
     "identity",
     "identity.email",
     "storage",
-    "https://*.textrazor.com/*",
+    "https://skillup-academy.s3.amazonaws.com/*",
     "webRequest",
     "webRequestBlocking"
   ],

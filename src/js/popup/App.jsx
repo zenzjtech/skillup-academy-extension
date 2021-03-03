@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ReactGA from 'react-ga';
 import { Provider } from 'react-redux';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { hot } from "react-hot-loader";
@@ -9,7 +8,6 @@ import Button from "@material-ui/core/Button";
 
 import reduxStore from './store';
 import View from "./view";
-import { GA_KEY } from './config';
 
 const { store, persistor } = reduxStore();
 
@@ -17,16 +15,7 @@ const { store, persistor } = reduxStore();
 const notistackRef = React.createRef();
 const onClickDismiss = key => () => {
 	notistackRef.current.closeSnackbar(key);
-}
-
-ReactGA.initialize(GA_KEY, {
-	debug: false,
-	titleCase: false
-});
-
-ReactGA.ga('set', 'checkProtocolTask', null);
-
-ReactGA.pageview('/popup');
+};
 
 const App = () => {
 	const [userInfo, setUserInfo] = useState({});
@@ -36,7 +25,6 @@ const App = () => {
 			try {
 				const response = await chrome.identity.getProfileUserInfo();
 				setUserInfo(response);
-				ReactGA.set({ clientId: response.email })
 			} catch (e) {
 				if (chrome.runtime.lastError)
 					console.log(e);

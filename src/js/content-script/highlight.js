@@ -5,7 +5,7 @@ function Highlight(id, tag)
     
     // private variables
     var targetNode = document.getElementById(id) || document.body;
-    var hiliteTag = tag || "SPAN";
+    var hiliteTag = tag || "a";
     var skipTags = new RegExp("^(?:" + hiliteTag + "|SCRIPT|FORM|SPAN|A)$");
     var entityTypes = [
         {
@@ -111,6 +111,7 @@ function Highlight(id, tag)
                 }*/ // DJ COMMENTED OUT AS NO NEED TO TRACK COLORS
                 
                 var match = document.createElement(hiliteTag);
+                match.href = `https://www.skillup-academy.com/skill/${regs[0]}`
                 match.appendChild(document.createTextNode(regs[0]));
                 //match.style.backgroundColor = entityTypes[e].color;//wordColor[regs[0].toLowerCase()];
                 //match.style.color = "#000"; // DJ REMOVED TO REPLACE WITH CLASS

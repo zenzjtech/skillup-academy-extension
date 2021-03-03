@@ -20,14 +20,11 @@ async function process() {
     if (state.KEY_STATE === false)
       return
     let result = await getTextInfo()
-    result = JSON.parse(result)
-    let entities = result.response.entities
-      .map(entity => entity.entityId);
-    entities = Array.from(new Set(entities)).sort().reverse().slice(0, 20)
-    console.log(entities)
-    entities.forEach(ent => {
-      console.log(ent)
-      hl.apply(ent, 1);
+    let keywords = result.map(v => v.name)
+    console.log(keywords)
+    keywords.forEach(keyword => {
+      console.log(keyword)
+      hl.apply(keyword, 1);
     })
   } catch (e) {
     console.log(e)
