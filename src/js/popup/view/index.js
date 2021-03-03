@@ -12,7 +12,7 @@ const View = (props) => {
     <>
       <AppBar position="fixed">
         <Toolbar>
-          Test textRazorAPI
+          Skillup-Academy-helper
         </Toolbar>
       </AppBar>
       <Switcher />

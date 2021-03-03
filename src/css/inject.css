@@ -1,20 +1,20 @@
-span.person {
+a.person {
     border-bottom-color: rgb(251, 174, 79);
     background-color: rgb(251, 174, 79);
 }
 
-span.topic {
+a.topic {
     border-bottom-color: rgb(255, 255, 102);
     background: rgb(255, 255, 102) !important;
     border-bottom-width: 0px !important;
 }
 
-span.organisation {
+a.organisation {
     border-bottom-color: rgb(253, 111, 72);
     background-color: rgb(253, 111, 72);
 }
 
-span.entity {
+a.entity {
     color: #2861FB;
     cursor: pointer;
     background: none;

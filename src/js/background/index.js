@@ -1,6 +1,6 @@
+import 'img/favicons.png'
 import cst from "../popup/constants";
 import { API_KEY, API_URL } from "../popup/config";
-import axios from "axios";
 const origin = 'https://skillup-academy.s3.amazonaws.com'
 import { handleResponse } from "../popup/services/helper";
 

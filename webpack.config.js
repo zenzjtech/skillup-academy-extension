@@ -71,8 +71,6 @@ var options = {
         }))
       }
     }, {
-      from: "src/css/inject.css"
-    }, {
       from: "src/js/content-script/chrome-extension-async.js"
     }, {
       from: "src/js/content-script/highlight.js"

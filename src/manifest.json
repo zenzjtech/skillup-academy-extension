@@ -3,7 +3,7 @@
   "version": "1.2",
   "browser_action": {
     "default_popup": "popup.html",
-    "default_icon": "icon-128.png"
+    "default_icon": "favicons.png"
   },
   "background": {
     "scripts": ["background.bundle.js"],
@@ -14,12 +14,11 @@
     {
       "matches": ["http://*/*","https://*/*"],
       "js":["chrome-extension-async.js", "highlight.js", "index.js"],
-      "css": ["inject.css"],
       "run_at": "document_end"
     }
   ],
   "icons": {
-    "128": "icon-128.png"
+    "16": "favicons.png"
   },
   "manifest_version": 2,
   "permissions": [

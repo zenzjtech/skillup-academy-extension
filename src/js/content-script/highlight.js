@@ -1,5 +1,8 @@
 // Original JavaScript code by Chirp Internet: www.chirp.com.au
 // Please acknowledge use of this code by including this header
+function escapeRegExp(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
 function Highlight(id, tag)
 {
     
@@ -69,6 +72,7 @@ function Highlight(id, tag)
     this.setRegex = function(input)
     {
         input = input.replace(endRegExp, "");
+        input = escapeRegExp(input)
         //input = input.replace(breakRegExp, "|"); //DJ REMOVED TO TEST
         input = input.replace(/^\||\|$/g, "");
         if(input) {
