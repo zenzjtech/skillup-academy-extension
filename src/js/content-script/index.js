@@ -20,13 +20,14 @@ async function process() {
     if (state.KEY_STATE === false)
       return
     let result = await getTextInfo()
-    setInterval(function() {
+    setInterval(async function() {
+      const state = await chrome.storage.local.get(['KEY_STATE'])
+      if (state.KEY_STATE === false)
+        return
       let keywords = result.map(v => v.name)
-      console.log(keywords)
       keywords.forEach(keyword => {
-        console.log(keyword)
         hl.apply(keyword, 1);
-      }, 500)
+      }, 1000)
     })
   } catch (e) {
     console.log(e)
